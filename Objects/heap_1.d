@@ -1,0 +1,13 @@
+.\objects\heap_1.o: RTOS\portable\MemMang\heap_1.c
+.\objects\heap_1.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\heap_1.o: .\RTOS\include\FreeRTOS.h
+.\objects\heap_1.o: D:\Installation\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\heap_1.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\heap_1.o: ..\Beta\FreeRTOSConfig.h
+.\objects\heap_1.o: .\RTOS\include\projdefs.h
+.\objects\heap_1.o: .\RTOS\include\portable.h
+.\objects\heap_1.o: .\RTOS\include\deprecated_definitions.h
+.\objects\heap_1.o: .\RTOS\portable\RVDS\ARM_CM0\portmacro.h
+.\objects\heap_1.o: .\RTOS\include\mpu_wrappers.h
+.\objects\heap_1.o: .\RTOS\include\task.h
+.\objects\heap_1.o: .\RTOS\include\list.h

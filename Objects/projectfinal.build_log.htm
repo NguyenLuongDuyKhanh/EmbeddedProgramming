@@ -1,0 +1,77 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.28.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Khanh Nguyen, UIT, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.28.0.0
+Toolchain Path:  D:\Installation\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.28.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.2.0
+Target DLL:      NULink\Nu_Link.dll V3.00
+Dialog DLL:      TARMCM1.DLL V1.14.1.0
+ 
+<h2>Project:</h2>
+D:\WorkingZone\NhungCanBan\Beta\projectfinal.uvprojx
+Project File Date:  11/11/2019
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Installation\ARM\ARMCC\Bin'
+Build target 'ShipShooting'
+compiling main.c...
+.\Ethernet\STM_ENC28_J60.h(133): warning:  #1-D: last line of file ends without a newline
+  void ENC28_writeBuf(uint16_t len, uint8_t* data);
+main.c(40): warning:  #177-D: variable "u32DataCount"  was declared but never referenced
+      uint32_t u32DataCount, u32TestCount, u32Err;
+main.c(40): warning:  #177-D: variable "u32TestCount"  was declared but never referenced
+      uint32_t u32DataCount, u32TestCount, u32Err;
+main.c(40): warning:  #177-D: variable "u32Err"  was declared but never referenced
+      uint32_t u32DataCount, u32TestCount, u32Err;
+main.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=5176 RO-data=360 RW-data=160 ZI-data=1320  
+FromELF: creating hex file...
+".\Objects\projectfinal.axf" - 0 Error(s), 4 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.6.0.pack
+                ARM.CMSIS.5.6.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.3.0
+
+Package Vendor: Nuvoton
+                http://www.nuvoton.com/hq/enu/Documents/KEILSoftwarePack/Nuvoton.NuMicro_DFP.1.3.4.pack
+                Nuvoton.NuMicro_DFP.1.3.4
+                Nuvoton ARM Cortex-M NuMicro Family Device Support
+   * Component: Startup Version: 0.00.001
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_ShipShooting
+  D:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include
+  D:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include
+  D:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.3.0
+
+   * Component: Nuvoton::Device:Startup:0.00.001
+      Source file:   Device\NUC131\Source\system_NUC131.c
+      Source file:   Device\NUC131\StdDriver\src\retarget.c
+      Include file:  Device\NUC131\Include\NUC131.h
+      Source file:   Device\NUC131\Source\ARM\startup_NUC131.s
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
