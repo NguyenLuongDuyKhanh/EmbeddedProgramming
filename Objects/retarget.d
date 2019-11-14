@@ -1,4 +1,4 @@
-.\objects\retarget.o: Drv\src\retarget.c
+.\objects\retarget.o: RTE\Device\NUC131SD2AE\retarget.c
 .\objects\retarget.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\retarget.o: D:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include\NUC131.h
 .\objects\retarget.o: D:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0.h

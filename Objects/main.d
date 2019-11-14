@@ -22,4 +22,15 @@
 .\objects\main.o: .\Drv\inc\WWDT.h
 .\objects\main.o: .\Drv\inc\UART.h
 .\objects\main.o: .\Drv\inc\CLK.h
-.\objects\main.o: .\Ethernet\STM_ENC28_J60.h
+.\objects\main.o: .\RTOS\include\FreeRTOS.h
+.\objects\main.o: D:\Installation\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\main.o: ..\EmbeddedProgramming\FreeRTOSConfig.h
+.\objects\main.o: .\RTOS\include\projdefs.h
+.\objects\main.o: .\RTOS\include\portable.h
+.\objects\main.o: .\RTOS\include\deprecated_definitions.h
+.\objects\main.o: .\RTOS\portable\RVDS\ARM_CM0\portmacro.h
+.\objects\main.o: .\RTOS\include\mpu_wrappers.h
+.\objects\main.o: .\RTOS\include\task.h
+.\objects\main.o: .\RTOS\include\list.h
+.\objects\main.o: .\RTOS\include\semphr.h
+.\objects\main.o: .\RTOS\include\queue.h

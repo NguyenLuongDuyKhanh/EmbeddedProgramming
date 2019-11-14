@@ -3,7 +3,7 @@
 .\objects\event_groups.o: .\RTOS\include\FreeRTOS.h
 .\objects\event_groups.o: D:\Installation\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\event_groups.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\event_groups.o: ..\Beta\FreeRTOSConfig.h
+.\objects\event_groups.o: ..\EmbeddedProgramming\FreeRTOSConfig.h
 .\objects\event_groups.o: .\RTOS\include\projdefs.h
 .\objects\event_groups.o: .\RTOS\include\portable.h
 .\objects\event_groups.o: .\RTOS\include\deprecated_definitions.h

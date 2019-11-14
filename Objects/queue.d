@@ -4,7 +4,7 @@
 .\objects\queue.o: .\RTOS\include\FreeRTOS.h
 .\objects\queue.o: D:\Installation\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\queue.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\queue.o: ..\Beta\FreeRTOSConfig.h
+.\objects\queue.o: ..\EmbeddedProgramming\FreeRTOSConfig.h
 .\objects\queue.o: .\RTOS\include\projdefs.h
 .\objects\queue.o: .\RTOS\include\portable.h
 .\objects\queue.o: .\RTOS\include\deprecated_definitions.h

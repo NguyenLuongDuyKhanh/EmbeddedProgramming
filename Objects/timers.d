@@ -3,7 +3,7 @@
 .\objects\timers.o: .\RTOS\include\FreeRTOS.h
 .\objects\timers.o: D:\Installation\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\timers.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\timers.o: ..\Beta\FreeRTOSConfig.h
+.\objects\timers.o: ..\EmbeddedProgramming\FreeRTOSConfig.h
 .\objects\timers.o: .\RTOS\include\projdefs.h
 .\objects\timers.o: .\RTOS\include\portable.h
 .\objects\timers.o: .\RTOS\include\deprecated_definitions.h

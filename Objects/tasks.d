@@ -4,7 +4,7 @@
 .\objects\tasks.o: .\RTOS\include\FreeRTOS.h
 .\objects\tasks.o: D:\Installation\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\tasks.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\tasks.o: ..\Beta\FreeRTOSConfig.h
+.\objects\tasks.o: ..\EmbeddedProgramming\FreeRTOSConfig.h
 .\objects\tasks.o: .\RTOS\include\projdefs.h
 .\objects\tasks.o: .\RTOS\include\portable.h
 .\objects\tasks.o: .\RTOS\include\deprecated_definitions.h

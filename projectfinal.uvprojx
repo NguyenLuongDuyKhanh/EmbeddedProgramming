@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Drv\inc;.\RTOS\include;.\RTOS\portable\RVDS\ARM_CM0;..\Beta;.\Ethernet</IncludePath>
+              <IncludePath>.\Drv\inc;.\RTOS\include;.\RTOS\portable\RVDS\ARM_CM0;..\Beta;.\Ethernet;..\EmbeddedProgramming</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

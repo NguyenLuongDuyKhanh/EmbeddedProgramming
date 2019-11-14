@@ -3,7 +3,7 @@
 .\objects\heap_1.o: .\RTOS\include\FreeRTOS.h
 .\objects\heap_1.o: D:\Installation\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\heap_1.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\heap_1.o: ..\Beta\FreeRTOSConfig.h
+.\objects\heap_1.o: ..\EmbeddedProgramming\FreeRTOSConfig.h
 .\objects\heap_1.o: .\RTOS\include\projdefs.h
 .\objects\heap_1.o: .\RTOS\include\portable.h
 .\objects\heap_1.o: .\RTOS\include\deprecated_definitions.h

@@ -22,7 +22,7 @@
 ".\objects\wdt.o"
 ".\objects\wwdt.o"
 ".\objects\stm_enc28_j60.o"
-".\objects\retarget_1.o"
+".\objects\retarget.o"
 ".\objects\startup_nuc131.o"
 ".\objects\system_nuc131.o"
 --ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
