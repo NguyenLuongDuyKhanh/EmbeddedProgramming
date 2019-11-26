@@ -6,73 +6,32 @@ static uint8_t Enc28_Bank;
 uint8_t dataWatch8;
 uint16_t dataWatch16;
 
+/*
+Use with Read Control Register 	-RCR
+*/
 uint8_t ENC28_readOp(uint8_t oper, uint8_t addr)
 {
-	uint8_t spiData[2];
+	SPI0->CNTRL |= 16<<SPI_CNTRL_TX_BIT_LEN_Pos;
+  /* Write to TX register */
+  SPI_WRITE_TX(SPI0, ((oper<<5)| (addr))<<8);
+  /* Trigger SPI data transfer */
+  SPI_TRIGGER(SPI0);
+  /* Check SPI0 busy status */
+  while(SPI_IS_BUSY(SPI0));
 	
-	/*Uncmt
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, GPIO_PIN_RESET);
-	*/
-	
-	spiData[0] = (oper| (addr & ADDR_MASK));
-	
-	/*Uncmt
-	HAL_SPI_Transmit(&hspi1, spiData, 1, 100);
-	*/
-	            /* Write to TX register */
-            SPI_WRITE_TX(SPI0, spiData[0]);
-            /* Trigger SPI data transfer */
-            SPI_TRIGGER(SPI0);
-            /* Check SPI0 busy status */
-            while(SPI_IS_BUSY(SPI0));
-	
-	if(addr & 0x80)
-	{
-		//HAL_SPI_Transmit(&hspi1, spiData, 1, 100);
-		
-		/*Uncmt
-		HAL_SPI_Receive(&hspi1, &spiData[1], 1, 100);
-		*/
-		spiData[1] = SPI_READ_RX(SPI0);
-	}
-	
-	/*Uncmt
-	HAL_SPI_Receive(&hspi1, &spiData[1], 1, 100);
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, GPIO_PIN_SET);
-	*/
-	spiData[1] = SPI_READ_RX(SPI0);
-	
-	return spiData[1];
+	return SPI_READ_RX(SPI0);
 }
+
+
 void ENC28_writeOp(uint8_t oper, uint8_t addr, uint8_t data)
 {
-	uint8_t spiData[2];
-	
-	/*Uncmt
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, GPIO_PIN_RESET);
-	*/
-	
-	spiData[0] = (oper| (addr & ADDR_MASK)); //((oper<<5)&0xE0)|(addr & ADDR_MASK);
-	spiData[1] = data;
-	
-	/*Uncmt
-	HAL_SPI_Transmit(&hspi1, spiData, 2, 100);
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, GPIO_PIN_SET);
-	*/
-	
-		            /* Write to TX register */
-            SPI_WRITE_TX(SPI0, spiData[0]);
-            /* Trigger SPI data transfer */
-            SPI_TRIGGER(SPI0);
-            /* Check SPI0 busy status */
-            while(SPI_IS_BUSY(SPI0));
-	
-								            /* Write to TX register */
-            SPI_WRITE_TX(SPI0, spiData[1]);
-            /* Trigger SPI data transfer */
-            SPI_TRIGGER(SPI0);
-            /* Check SPI0 busy status */
-            while(SPI_IS_BUSY(SPI0));
+		SPI0->CNTRL |= 16<<SPI_CNTRL_TX_BIT_LEN_Pos;
+		/* Write to TX register */
+    SPI_WRITE_TX(SPI0, (oper<<5|addr)<<8|data);
+    /* Trigger SPI data transfer */
+    SPI_TRIGGER(SPI0);
+    /* Check SPI0 busy status */
+    while(SPI_IS_BUSY(SPI0));
 }
 uint8_t ENC28_readReg8(uint8_t addr)
 {
@@ -92,8 +51,8 @@ uint16_t ENC28_readReg16( uint8_t addr)
 }
 void ENC28_writeReg16(uint8_t addrL, uint16_t data)
 {
-	ENC28_writeReg8(addrL, data);
-	ENC28_writeReg8(addrL+1, data >> 8);
+	ENC28_writeReg8(addrL, (data) & (0xff));
+	ENC28_writeReg8(addrL+1, (data >> 8) & (0xff));
 }
 
 void ENC28_setBank(uint8_t addr)

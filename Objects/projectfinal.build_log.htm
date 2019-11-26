@@ -17,7 +17,7 @@ Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.28.0.0
 Dialog DLL:      DARMCM1.DLL V1.19.2.0
-Target DLL:      NULink\Nu_Link.dll V3.00
+Target DLL:      NULink\Nu_Link.dll V2.00
 Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
@@ -28,10 +28,19 @@ Project File Date:  11/12/2019
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Installation\ARM\ARMCC\Bin'
 Build target 'ShipShooting'
 compiling main.c...
+.\Ethernet\STM_ENC28_J60.h(140): warning:  #1-D: last line of file ends without a newline
+  void ENC28_writeBuf(uint16_t len, uint8_t* data);
+main.c(33): warning:  #177-D: variable "u32DataCount"  was declared but never referenced
+      uint32_t u32DataCount, u32TestCount, u32Err;
+main.c(33): warning:  #177-D: variable "u32TestCount"  was declared but never referenced
+      uint32_t u32DataCount, u32TestCount, u32Err;
+main.c(33): warning:  #177-D: variable "u32Err"  was declared but never referenced
+      uint32_t u32DataCount, u32TestCount, u32Err;
+main.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=6644 RO-data=324 RW-data=140 ZI-data=6324  
+Program Size: Code=4144 RO-data=360 RW-data=128 ZI-data=1320  
 FromELF: creating hex file...
-".\Objects\projectfinal.axf" - 0 Error(s), 0 Warning(s).
+".\Objects\projectfinal.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -59,9 +68,9 @@ Package Vendor: Nuvoton
 
    * Component: Nuvoton::Device:Startup:0.00.001
       Source file:   Device\NUC131\Source\ARM\startup_NUC131.s
-      Source file:   Device\NUC131\StdDriver\src\retarget.c
       Include file:  Device\NUC131\Include\NUC131.h
       Source file:   Device\NUC131\Source\system_NUC131.c
+      Source file:   Device\NUC131\StdDriver\src\retarget.c
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

@@ -111,17 +111,24 @@
 #define PHCON2										0x10
 #define PHSTAT2										0x11
 #define PHLCON										0x14
+/******************************************************************************/
+/*Functions prototypes*/
+/******************************************************************************/
 
-//Functions prototypes
+/**/
 uint8_t ENC28_readOp(uint8_t oper, uint8_t addr);
 void ENC28_writeOp(uint8_t oper, uint8_t addr, uint8_t data);
 
+/*Read/write 8bit reg*/
 uint8_t ENC28_readReg8( uint8_t addr);
 void ENC28_writeReg8(uint8_t addr, uint8_t data);
 
+/*Read/write 16bit reg*/
 uint16_t ENC28_readReg16( uint8_t addr);
 void ENC28_writeReg16(uint8_t addrL, uint16_t data);
 
+/*Function too choice one from 4 bank register*/
+/*Refer TABLE 3-1: ENC28J60 CONTROL REGISTER MAP ENCdatasheet*/
 void ENC28_setBank(uint8_t addr);
 
 void ENC28_Init(void);

@@ -1,5 +1,5 @@
 Dependencies for Project 'projectfinal', Target 'ShipShooting': (DO NOT MODIFY !)
-F (.\main.c)(0x5DCCF510)(--c99 --gnu -c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Drv\inc -I .\RTOS\include -I .\RTOS\portable\RVDS\ARM_CM0 -I ..\Beta -I .\Ethernet -I ..\EmbeddedProgramming-I.\RTE\_ShipShooting-ID:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc-D__UVISION_VERSION="528" -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x5DDD3EB0)(--c99 --gnu -c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Drv\inc -I .\RTOS\include -I .\RTOS\portable\RVDS\ARM_CM0 -I ..\Beta -I .\Ethernet -I ..\EmbeddedProgramming-I.\RTE\_ShipShooting-ID:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc-D__UVISION_VERSION="528" -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (D:\Installation\ARM\ARMCC\include\stdio.h)(0x5CEB87F2)
 I (D:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include\NUC131.h)(0x59F13F28)
 I (D:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0.h)(0x5D259EC6)
@@ -22,18 +22,7 @@ I (.\Drv\inc\WDT.h)(0x5ABB7DF2)
 I (.\Drv\inc\WWDT.h)(0x5ABB7DF2)
 I (.\Drv\inc\UART.h)(0x5ABB7DF2)
 I (.\Drv\inc\CLK.h)(0x5ABB7DF2)
-I (.\RTOS\include\FreeRTOS.h)(0x5CD62451)
-I (D:\Installation\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\EmbeddedProgramming\FreeRTOSConfig.h)(0x5DCA9E6B)
-I (.\RTOS\include\projdefs.h)(0x5CD62451)
-I (.\RTOS\include\portable.h)(0x5CD62451)
-I (.\RTOS\include\deprecated_definitions.h)(0x5CD62451)
-I (.\RTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x5CD62452)
-I (.\RTOS\include\mpu_wrappers.h)(0x5CD62451)
-I (.\RTOS\include\task.h)(0x5CD62451)
-I (.\RTOS\include\list.h)(0x5CD62451)
-I (.\RTOS\include\semphr.h)(0x5CD62451)
-I (.\RTOS\include\queue.h)(0x5CD62451)
+I (.\Ethernet\STM_ENC28_J60.h)(0x5DDC2B1A)
 F (.\FreeRTOSConfig.h)(0x5DCA9E6B)()
 F (.\RTOS\event_groups.c)(0x5CD62451)(--c99 --gnu -c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Drv\inc -I .\RTOS\include -I .\RTOS\portable\RVDS\ARM_CM0 -I ..\Beta -I .\Ethernet -I ..\EmbeddedProgramming-I.\RTE\_ShipShooting-ID:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc-D__UVISION_VERSION="528" -D_RTE_-o .\objects\event_groups.o --omf_browse .\objects\event_groups.crf --depend .\objects\event_groups.d)
 I (D:\Installation\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
@@ -443,8 +432,8 @@ I (.\Drv\inc\WDT.h)(0x5ABB7DF2)
 I (.\Drv\inc\WWDT.h)(0x5ABB7DF2)
 I (.\Drv\inc\UART.h)(0x5ABB7DF2)
 I (.\Drv\inc\CLK.h)(0x5ABB7DF2)
-F (.\Ethernet\STM_ENC28_J60.c)(0x5DC92701)(--c99 --gnu -c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Drv\inc -I .\RTOS\include -I .\RTOS\portable\RVDS\ARM_CM0 -I ..\Beta -I .\Ethernet -I ..\EmbeddedProgramming-I.\RTE\_ShipShooting-ID:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc-D__UVISION_VERSION="528" -D_RTE_-o .\objects\stm_enc28_j60.o --omf_browse .\objects\stm_enc28_j60.crf --depend .\objects\stm_enc28_j60.d)
-I (Ethernet\STM_ENC28_J60.h)(0x5DC8FEA9)
+F (.\Ethernet\STM_ENC28_J60.c)(0x5DDD3E22)(--c99 --gnu -c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Drv\inc -I .\RTOS\include -I .\RTOS\portable\RVDS\ARM_CM0 -I ..\Beta -I .\Ethernet -I ..\EmbeddedProgramming-I.\RTE\_ShipShooting-ID:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc-D__UVISION_VERSION="528" -D_RTE_-o .\objects\stm_enc28_j60.o --omf_browse .\objects\stm_enc28_j60.crf --depend .\objects\stm_enc28_j60.d)
+I (Ethernet\STM_ENC28_J60.h)(0x5DDC2B1A)
 I (D:\Installation\ARM\ARMCC\include\stdio.h)(0x5CEB87F2)
 I (D:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include\NUC131.h)(0x59F13F28)
 I (D:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0.h)(0x5D259EC6)
@@ -467,7 +456,7 @@ I (.\Drv\inc\WDT.h)(0x5ABB7DF2)
 I (.\Drv\inc\WWDT.h)(0x5ABB7DF2)
 I (.\Drv\inc\UART.h)(0x5ABB7DF2)
 I (.\Drv\inc\CLK.h)(0x5ABB7DF2)
-F (.\Ethernet\STM_ENC28_J60.h)(0x5DC8FEA9)()
+F (.\Ethernet\STM_ENC28_J60.h)(0x5DDC2B1A)()
 F (RTE\Device\NUC131SD2AE\retarget.c)(0x59F13F28)(--c99 --gnu -c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Drv\inc -I .\RTOS\include -I .\RTOS\portable\RVDS\ARM_CM0 -I ..\Beta -I .\Ethernet -I ..\EmbeddedProgramming-I.\RTE\_ShipShooting-ID:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include-ID:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc-D__UVISION_VERSION="528" -D_RTE_-o .\objects\retarget.o --omf_browse .\objects\retarget.crf --depend .\objects\retarget.d)
 I (D:\Installation\ARM\ARMCC\include\stdio.h)(0x5CEB87F2)
 I (D:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include\NUC131.h)(0x59F13F28)
