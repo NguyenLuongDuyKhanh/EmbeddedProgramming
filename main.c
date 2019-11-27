@@ -14,7 +14,7 @@
 #include "NUC131.h"
 #include "STM_ENC28_J60.h"
 #define TEST_COUNT             64
-
+void delay1(uint32_t time);
 uint32_t g_au32SourceData[TEST_COUNT];
 uint32_t g_au32DestinationData[TEST_COUNT];
 uint32_t result[2];
@@ -24,6 +24,7 @@ void SPI_Init(void);
 
 uint32_t debug;
 uint8_t debug1;
+uint16_t dataWatch17;
 
 /* ------------- */
 /* Main function */
@@ -36,7 +37,7 @@ int main(void)
     SYS_UnlockReg();
 
     SYS_Init();
-		//GPIO_SetMode(PB, BIT13, GPIO_PMD_OUTPUT);
+		GPIO_SetMode(PA, BIT14, GPIO_PMD_OUTPUT);
 		//PB13 = 1;
     /* Lock protected registers */
     SYS_LockReg();
@@ -46,15 +47,95 @@ int main(void)
 
     /* Init SPI */
     SPI_Init();
+////////////////////////////////////////////
+//intETH
+////////////////////////////////////////////	
+	// (1): Disable the chip CS pin
+	
+	// (2): Perform soft reset to the ENC28J60 module
+		ENC28_writeOp(ENC28_SOFT_RESET, 0, ENC28_SOFT_RESET);
 		
-		debug = ENC28_readOp(0x00,0x1F);
-		ENC28_writeOp(0x02, 0x1F, 0x01);
-		debug = ENC28_readOp(0x00,0x1F);
+	// (3): Wait untill Clock is ready
+	while(!ENC28_readOp(0x00, 0x1D) & ESTAT_CLKRDY);
+	
+		// (6): MAC Control Register 1
+	//ENC28_writeReg8(MACON1, MACON1_MARXEN|MACON1_TXPAUS|MACON1_RXPAUS|MACON1_PASSALL);
+	ENC28_writeOp(0x05, ECON1, 0x03);//setbit
+	ENC28_writeOp(0x04, ECON1, 0x02);//clearbit
+	ENC28_writeOp(0x02, MACON1, MACON1_MARXEN|MACON1_TXPAUS|MACON1_RXPAUS|MACON1_PASSALL);
+	
+	//dataWatch8 = ENC28_readReg8(ERXFCON);
+	// (7): MAC Control Register 3
+	ENC28_writeOp(0x04, MACON3,MACON3_PADCFG0|MACON3_TXCRCEN|MACON3_FRMLNEN);
+	
+//		debug = ENC28_readOp(0x00,0x1f);
+//		ENC28_writeOp(0x04, ECON1, 0x03);
+//		debug = ENC28_readOp(0x00,0x1f);
+//		ENC28_writeOp(0x05, ECON1, 0x03);
+//		debug = ENC28_readOp(0x00,0x1f);
+//    ENC28_writeOp(0x04, ECON1, 0x03);
+//		//ENC28_writeOp(0x02, ECON1, 0x03);
+//		debug = ENC28_readOp(0x00,0x1f);
+//		
+//		ENC28_writeReg16(ETXND, TXSTOP_INIT);
+//		
+//		dataWatch17 = ENC28_readReg16(ERXND);
+//		//ENC28_writeOp(0x02, 0x1F, 0x01);
+//		debug = ENC28_readOp(0x00,0x1f);
+//		ENC28_writeOp(ENC28_SOFT_RESET,0x1f, 0x00);
+//		debug = ENC28_readOp(0x00,0x1f);
+		
+			// (10): Set the MAC address of the device
+				ENC28_writeOp(0x05, ECON1, 0x03);//setbit
+				ENC28_writeOp(0x04, ECON1, 0x03);//clearbit
+				
+	//ENC28_writeReg8(0x04, MAC_1);
+		ENC28_writeOp(0x02, 0x04,MAC_1);
+	//ENC28_writeReg8(MAADR2, MAC_2);
+		ENC28_writeOp(0x02, 0x05,MAC_2);
+	//ENC28_writeReg8(MAADR3, MAC_3);
+		ENC28_writeOp(0x02, 0x02,MAC_3);
+	//ENC28_writeReg8(MAADR4, MAC_4);
+		ENC28_writeOp(0x02, 0x03,MAC_4);
+	//ENC28_writeReg8(MAADR5, MAC_5);
+		ENC28_writeOp(0x02, 0x00,MAC_5);
+	//ENC28_writeReg8(MAADR6, MAC_6);
+		ENC28_writeOp(0x02, 0x01,MAC_6);
+	
+//	dataWatch8 = ENC28_readReg8(MAADR1);
+//	dataWatch8 = ENC28_readReg8(MAADR2);
+//	dataWatch8 = ENC28_readReg8(MAADR3);
+//	dataWatch8 = ENC28_readReg8(MAADR4);
+//	dataWatch8 = ENC28_readReg8(MAADR5);
+//	dataWatch8 = ENC28_readReg8(MAADR6);
 
-    /* Close SPI0 */
+	debug = ENC28_readOp(0x00, 0x04);
+	debug = ENC28_readOp(0x00, 0x05);
+	debug = ENC28_readOp(0x00, 0x02);
+	debug = ENC28_readOp(0x00, 0x03);
+	debug = ENC28_readOp(0x00, 0x00);
+	debug = ENC28_readOp(0x00, 0x01);
+	
+		/*
+		//test read/write 16b but faild
+		debug = ENC28_readReg16(ERXST);
+		ENC28_writeReg16(ERXST, RXSTOP_INIT);
+		debug = ENC28_readReg16(ERXST);
+		debug = ENC28_readReg16(ERXRDPT);
+		debug = ENC28_readReg16(ERXWRPT);
+		*/
+		
+		/*
+		ENC28_Init();
+    */
+		
+		/* Close SPI0 */
     SPI_Close(SPI0);
 
-    while(1);
+    while(1)
+			{
+			}
+			
 }
 
 void SYS_Init(void)
@@ -114,7 +195,11 @@ void SPI_Init(void)
 
     /* Enable the automatic hardware slave select function. Select the SS pin and configure as low-active. */
     SPI_EnableAutoSS(SPI0, SPI_SS0, SPI_SS_ACTIVE_LOW);
+		//SPI_DisableAutoSS(SPI0);
 }
-
+void delay1(uint32_t time)
+	{
+		while(time--);
+	}
 /*** (C) COPYRIGHT 2014 Nuvoton Technology Corp. ***/
 

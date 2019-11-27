@@ -1,11 +1,12 @@
 #include "STM_ENC28_J60.h"
+#include <stdio.h>
+#include "NUC131.h"
 
-//variables
-//extern SPI_HandleTypeDef hspi1;
 static uint8_t Enc28_Bank;
 uint8_t dataWatch8;
 uint16_t dataWatch16;
 
+void delay(uint32_t time);
 /*
 Use with Read Control Register 	-RCR
 */
@@ -18,13 +19,14 @@ uint8_t ENC28_readOp(uint8_t oper, uint8_t addr)
   SPI_TRIGGER(SPI0);
   /* Check SPI0 busy status */
   while(SPI_IS_BUSY(SPI0));
-	
+
 	return SPI_READ_RX(SPI0);
 }
 
 
 void ENC28_writeOp(uint8_t oper, uint8_t addr, uint8_t data)
 {
+
 		SPI0->CNTRL |= 16<<SPI_CNTRL_TX_BIT_LEN_Pos;
 		/* Write to TX register */
     SPI_WRITE_TX(SPI0, (oper<<5|addr)<<8|data);
@@ -32,6 +34,7 @@ void ENC28_writeOp(uint8_t oper, uint8_t addr, uint8_t data)
     SPI_TRIGGER(SPI0);
     /* Check SPI0 busy status */
     while(SPI_IS_BUSY(SPI0));
+
 }
 uint8_t ENC28_readReg8(uint8_t addr)
 {
@@ -41,28 +44,27 @@ uint8_t ENC28_readReg8(uint8_t addr)
 
 void ENC28_writeReg8(uint8_t addr, uint8_t data)
 {
-	ENC28_setBank(addr);
+	//ENC28_setBank(addr);
 	ENC28_writeOp(ENC28_WRITE_CTRL_REG, addr, data);
 }
 
 uint16_t ENC28_readReg16( uint8_t addr)
 {
+	
 	return ENC28_readReg8(addr) + (ENC28_readReg8(addr+1) << 8);
 }
 void ENC28_writeReg16(uint8_t addrL, uint16_t data)
 {
-	ENC28_writeReg8(addrL, (data) & (0xff));
-	ENC28_writeReg8(addrL+1, (data >> 8) & (0xff));
+	ENC28_writeReg8(addrL, (data));
+	ENC28_writeReg8(addrL+1, (data >> 8));
 }
 
 void ENC28_setBank(uint8_t addr)
 {
-	if ((addr & BANK_MASK) != Enc28_Bank) 
-	{
+
 		ENC28_writeOp(ENC28_BIT_FIELD_CLR, ECON1, ECON1_BSEL1|ECON1_BSEL0);
 		Enc28_Bank = addr & BANK_MASK;
     ENC28_writeOp(ENC28_BIT_FIELD_SET, ECON1, Enc28_Bank>>5);
-	}
 }
 
 void ENC28_writePhy(uint8_t addr, uint16_t data)
@@ -83,22 +85,16 @@ uint16_t ENC28_readPhy(uint8_t addr)
 
 void ENC28_Init(void)
 {
-	uint8_t spiData[2];
+	PA14=1;
 	// (1): Disable the chip CS pin
-	
-	/*Uncmt
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, GPIO_PIN_SET);
-	HAL_Delay(1);
-	*/
-	
+	delay(100);
 	// (2): Perform soft reset to the ENC28J60 module
 	ENC28_writeOp(ENC28_SOFT_RESET, 0, ENC28_SOFT_RESET);
+	delay(100);
 	
-	/*Uncmt
-	HAL_Delay(2);
-	*/
 	// (3): Wait untill Clock is ready
 	while(!ENC28_readOp(ENC28_READ_CTRL_REG, ESTAT) & ESTAT_CLKRDY);
+	
 	// (4): Initialise RX and TX buffer size
 	ENC28_writeReg16(ERXST, RXSTART_INIT);
 	ENC28_writeReg16(ERXND, RXSTOP_INIT);
@@ -138,11 +134,6 @@ void ENC28_Init(void)
 	dataWatch8 = ENC28_readReg8(MAADR4);
 	dataWatch8 = ENC28_readReg8(MAADR5);
 	dataWatch8 = ENC28_readReg8(MAADR6);
-	
-	/*Uncmt
-	if(dataWatch8==MAC_6)HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
-	*/
-	if(dataWatch8==MAC_6)PD14=1;
 	
 	//**********Advanced Initialisations************//
 	// (1): Initialise PHY layer registers
@@ -229,3 +220,7 @@ void ENC28_writeBuf(uint16_t len, uint8_t* data)
 		}
 						
 }
+void delay(uint32_t time)
+	{
+		while(time--);
+	}
