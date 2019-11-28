@@ -6,7 +6,7 @@ static uint8_t Enc28_Bank;
 uint8_t dataWatch8;
 uint16_t dataWatch16;
 
-void delay(uint32_t time);
+static void delay(uint32_t time);
 /*
 Use with Read Control Register 	-RCR
 */

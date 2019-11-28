@@ -22,12 +22,25 @@ Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
 D:\WorkingZone\NhungCanBan\Beta\EmbeddedProgramming\projectfinal.uvprojx
-Project File Date:  11/12/2019
+Project File Date:  11/29/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Installation\ARM\ARMCC\Bin'
 Build target 'ShipShooting'
-".\Objects\projectfinal.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+main.c(35): warning:  #177-D: variable "a"  was declared but never referenced
+  		uint8_t a;
+main.c(14): warning:  #177-D: variable "dis_mac"  was declared but never referenced
+  static uint8_t dis_mac[6] = {0x1C,0x65,0x9D,0x58,0x97,0xF3}; // dia chi mac may tinh // "ipconfig /all" roi tim cai MAC cua card WIfi ay
+main.c(15): warning:  #177-D: variable "dis_ip"  was declared but never referenced
+  static uint8_t dis_ip[4] = {192,168,1,116};                   // IP may tinh
+main.c(18): warning:  #177-D: variable "buf"  was declared but never referenced
+  static uint8_t buf[BUFFER_SIZE + 1];
+main.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=5080 RO-data=360 RW-data=204 ZI-data=1324  
+FromELF: creating hex file...
+".\Objects\projectfinal.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,11 +67,11 @@ Package Vendor: Nuvoton
    * Component: ARM::CMSIS:CORE:5.3.0
 
    * Component: Nuvoton::Device:Startup:0.00.001
-      Include file:  Device\NUC131\Include\NUC131.h
       Source file:   Device\NUC131\Source\ARM\startup_NUC131.s
-      Source file:   Device\NUC131\StdDriver\src\retarget.c
       Source file:   Device\NUC131\Source\system_NUC131.c
-Build Time Elapsed:  00:00:00
+      Source file:   Device\NUC131\StdDriver\src\retarget.c
+      Include file:  Device\NUC131\Include\NUC131.h
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

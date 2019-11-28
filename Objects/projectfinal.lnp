@@ -22,6 +22,8 @@
 ".\objects\wdt.o"
 ".\objects\wwdt.o"
 ".\objects\stm_enc28_j60.o"
+".\objects\enc28j60.o"
+".\objects\ip_arp_udp_tcp.o"
 ".\objects\retarget.o"
 ".\objects\startup_nuc131.o"
 ".\objects\system_nuc131.o"

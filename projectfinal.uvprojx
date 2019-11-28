@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Drv\inc;.\RTOS\include;.\RTOS\portable\RVDS\ARM_CM0;..\Beta;.\Ethernet;..\EmbeddedProgramming</IncludePath>
+              <IncludePath>.\Drv\inc;.\RTOS\include;.\RTOS\portable\RVDS\ARM_CM0;..\Beta;.\Ethernet;..\EmbeddedProgramming;.\EthernetQuanGui;.\InternetProtocol</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -521,6 +521,41 @@
               <FileName>STM_ENC28_J60.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Ethernet\STM_ENC28_J60.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>EthernetQuan</GroupName>
+          <Files>
+            <File>
+              <FileName>ENC28J60.C</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\EthernetQuanGui\ENC28J60.C</FilePath>
+            </File>
+            <File>
+              <FileName>ENC28J60.H</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EthernetQuanGui\ENC28J60.H</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>IP</GroupName>
+          <Files>
+            <File>
+              <FileName>ip_arp_udp_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\InternetProtocol\ip_arp_udp_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip_arp_udp_tcp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\InternetProtocol\ip_arp_udp_tcp.h</FilePath>
+            </File>
+            <File>
+              <FileName>net.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\InternetProtocol\net.h</FilePath>
             </File>
           </Files>
         </Group>
