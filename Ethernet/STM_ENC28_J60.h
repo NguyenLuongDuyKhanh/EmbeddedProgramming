@@ -41,13 +41,13 @@
 #define MACON1										0x00|0x40
 #define MACON2										0x01|0x40
 #define MACON3										0x02|0x40
-#define MAIPG										  0x06|0x40|0x80
-#define MABBIPG									  0x04|0x40|0x80
-#define MAMXFL									  0x0A|0x40|0x80
-#define MIREGADR									0x14|0x40|0x80
-#define MIWR					    				0x16|0x40|0x80
-#define MICMD					    				0x12|0x40|0x80
-#define MIRD					    				0x18|0x40|0x80
+#define MAIPG										  0x06
+#define MABBIPG									  0x04
+#define MAMXFL									  0x0A
+#define MIREGADR									0x14
+#define MIWR					    				0x16
+#define MICMD					    				0x12
+#define MIRD					    				0x18
 
 // Bank3 - control registers addresses
 #define MAADR1									  0x04|0x60|0x80
@@ -87,6 +87,7 @@
 #define MACON3_PADCFG0						0x20
 #define MACON3_TXCRCEN						0x10
 #define MACON3_FRMLNEN						0x02
+#define MACON3_HFRMEN							0x04
 #define EIE_INTIE									0x80 
 #define EIE_PKTIE									0x40
 #define EIR_TXERIF								0x02

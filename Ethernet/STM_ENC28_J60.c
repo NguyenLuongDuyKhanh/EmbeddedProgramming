@@ -12,21 +12,23 @@ Use with Read Control Register 	-RCR
 */
 uint8_t ENC28_readOp(uint8_t oper, uint8_t addr)
 {
-	SPI0->CNTRL |= 16<<SPI_CNTRL_TX_BIT_LEN_Pos;
+		SPI0->CNTRL |= 16<<SPI_CNTRL_TX_BIT_LEN_Pos;
+		PA14=0;
+
   /* Write to TX register */
   SPI_WRITE_TX(SPI0, ((oper<<5)| (addr))<<8);
   /* Trigger SPI data transfer */
   SPI_TRIGGER(SPI0);
   /* Check SPI0 busy status */
   while(SPI_IS_BUSY(SPI0));
-
+PA14=1;
 	return SPI_READ_RX(SPI0);
 }
 
 
 void ENC28_writeOp(uint8_t oper, uint8_t addr, uint8_t data)
 {
-
+PA14=0;
 		SPI0->CNTRL |= 16<<SPI_CNTRL_TX_BIT_LEN_Pos;
 		/* Write to TX register */
     SPI_WRITE_TX(SPI0, (oper<<5|addr)<<8|data);
@@ -34,7 +36,7 @@ void ENC28_writeOp(uint8_t oper, uint8_t addr, uint8_t data)
     SPI_TRIGGER(SPI0);
     /* Check SPI0 busy status */
     while(SPI_IS_BUSY(SPI0));
-
+PA14=1;
 }
 uint8_t ENC28_readReg8(uint8_t addr)
 {
@@ -69,23 +71,90 @@ void ENC28_setBank(uint8_t addr)
 
 void ENC28_writePhy(uint8_t addr, uint16_t data)
 {
-	ENC28_writeReg8(MIREGADR, addr);
-	ENC28_writeReg8(MIWR, data);
-	while (ENC28_readReg8(MISTAT) & MISTAT_BUSY);
+	ENC28_writeOp(0x05, ECON1, 0x03);//setbit
+	ENC28_writeOp(0x04, ECON1, 0x02);//clearbit
+	
+	//ENC28_writeReg8(MIREGADR, addr);
+	ENC28_writeOp(0x02, MIREGADR, addr);
+	//ENC28_writeReg8(MIWR, data);
+	ENC28_writeOp(0x02, MIWR, data);
+	
+	ENC28_writeOp(0x05, ECON1, 0x03);//setbit
+	ENC28_writeOp(0x04, ECON1, 0x03);//clearbit
+	
+	//while (ENC28_readOp(0x00, MISTAT) & MISTAT_BUSY);
+	
+	SPI0->CNTRL |= 24<<SPI_CNTRL_TX_BIT_LEN_Pos;
+  /* Write to TX register */
+  SPI_WRITE_TX(SPI0, ((0x00<<5)| (MISTAT))<<16);
+  /* Trigger SPI data transfer */
+  SPI_TRIGGER(SPI0);
+  /* Check SPI0 busy status */
+  while(SPI_IS_BUSY(SPI0));
+
+	while( (SPI_READ_RX(SPI0)&0xff00)&MISTAT_BUSY);
+	
+
 }
 
 uint16_t ENC28_readPhy(uint8_t addr)
 {
-	ENC28_writeReg8(MIREGADR, addr);							// pass the PHY address to the MII
-	ENC28_writeReg8(MICMD, MICMD_MIIRD);					// Enable Read bit
-	while (ENC28_readReg8(MISTAT) & MISTAT_BUSY);	// Poll for end of reading
-	ENC28_writeReg8(MICMD, 0x00);									// Disable MII Read
-	return ENC28_readReg8(MIRD) + (ENC28_readReg8(MIRD+1) << 8);
+	//ENC28_writeReg8(MIREGADR, addr);							// pass the PHY address to the MII
+	ENC28_writeOp(0x05, ECON1, 0x03);//setbit
+	ENC28_writeOp(0x04, ECON1, 0x02);//clearbit
+	ENC28_writeOp(0x02, MIREGADR, addr);
+	
+	//ENC28_writeReg8(MICMD, MICMD_MIIRD);					// Enable Read bit
+	ENC28_writeOp(0x02, MICMD, MICMD_MIIRD);
+	
+	//while (ENC28_readReg8(MISTAT) & MISTAT_BUSY);	// Poll for end of reading
+	ENC28_writeOp(0x05, ECON1, 0x03);//setbit
+	ENC28_writeOp(0x04, ECON1, 0x03);//clearbit
+	//while (ENC28_readOp(0x00,MISTAT) & MISTAT_BUSY);
+		SPI0->CNTRL |= 24<<SPI_CNTRL_TX_BIT_LEN_Pos;
+  /* Write to TX register */
+  SPI_WRITE_TX(SPI0, ((0x00<<5)| (MISTAT))<<16);
+  /* Trigger SPI data transfer */
+  SPI_TRIGGER(SPI0);
+  /* Check SPI0 busy status */
+  while(SPI_IS_BUSY(SPI0));
+
+	while( (SPI_READ_RX(SPI0)&0xff00)&MISTAT_BUSY);
+	
+	
+	//ENC28_writeReg8(MICMD, 0x00);									// Disable MII Read
+	ENC28_writeOp(0x02, MICMD, 0x00);//clearbit
+	
+	//return ENC28_readReg8(MIRD) + (ENC28_readReg8(MIRD+1) << 8);
+	ENC28_writeOp(0x05, ECON1, 0x03);//setbit
+	ENC28_writeOp(0x04, ECON1, 0x02);//clearbit
+	
+	uint8_t h;
+	uint8_t l;
+	
+	//return ENC28_readOp(0x00,MIRD) + (ENC28_readOp(0x00,MIRD+1) << 8);
+		SPI0->CNTRL |= 24<<SPI_CNTRL_TX_BIT_LEN_Pos;
+		
+  /* Write to TX register */
+  SPI_WRITE_TX(SPI0, ((0x00<<5)| (MIRD))<<16);
+  /* Trigger SPI data transfer */
+  SPI_TRIGGER(SPI0);
+  /* Check SPI0 busy status */
+  while(SPI_IS_BUSY(SPI0));
+	h=SPI_READ_RX(SPI0);
+  /* Write to TX register */
+  SPI_WRITE_TX(SPI0, ((0x00<<5)| (MIRD)+1)<<16);
+  /* Trigger SPI data transfer */
+  SPI_TRIGGER(SPI0);
+  /* Check SPI0 busy status */
+  while(SPI_IS_BUSY(SPI0));
+	l=SPI_READ_RX(SPI0);
+	return l;
 }
 
 void ENC28_Init(void)
 {
-	PA14=1;
+	//PA14=1;
 	// (1): Disable the chip CS pin
 	delay(100);
 	// (2): Perform soft reset to the ENC28J60 module
@@ -148,77 +217,87 @@ void ENC28_Init(void)
 
 void ENC28_packetSend(uint16_t len, uint8_t* dataBuf)
 {
+
 	uint8_t retry = 0;
 	
 	while(1)
 	{
-		ENC28_writeOp(ENC28_BIT_FIELD_SET, ECON1, ECON1_TXRST);
-    ENC28_writeOp(ENC28_BIT_FIELD_CLR, ECON1, ECON1_TXRST);
-		ENC28_writeOp(ENC28_BIT_FIELD_CLR, EIR, EIR_TXERIF|EIR_TXIF);
+		ENC28_writeOp(0x04, ECON1, ECON1_TXRST);
+    ENC28_writeOp(0x05, ECON1, ECON1_TXRST);
+		ENC28_writeOp(0x05, EIR, EIR_TXERIF|EIR_TXIF);
+		
 		
 		// prepare new transmission 
 		if(retry == 0)
 		{
-			ENC28_writeReg16(EWRPT, TXSTART_INIT);
-			ENC28_writeReg16(ETXND, TXSTART_INIT+len);
-			ENC28_writeOp(ENC28_WRITE_BUF_MEM, 0, 0);  //line 485 enc28j60.cpp
+			ENC28_writeOp(0x05, ECON1, 0x03);//Clear
+			
+			//ENC28_writeReg16(EWRPT, TXSTART_INIT);
+			ENC28_writeOp(0x02, EWRPT, TXSTART_INIT&0xff);
+			ENC28_writeOp(0x02, EWRPT+1, TXSTART_INIT>>8);
+			
+			//ENC28_writeReg16(ETXND, TXSTART_INIT+len);
+			ENC28_writeOp(0x02, ETXND, TXSTART_INIT&0xff);
+			ENC28_writeOp(0x02, ETXND+1, TXSTART_INIT>>8);
+			
+			//ENC28_writeOp(ENC28_WRITE_BUF_MEM, 0, 0);  //line 485 enc28j60.cpp
+			ENC28_writeOp(0x03, 0, 0);  //line 485 enc28j60.cpp
 			ENC28_writeBuf(len, dataBuf);
 		}
 		
+		uint32_t debug2 = ENC28_readOp(0x00,EIR);
 		// initiate transmission
-		ENC28_writeOp(ENC28_BIT_FIELD_SET, ECON1, ECON1_TXRTS);
+		ENC28_writeOp(0x04, ECON1, ECON1_TXRTS);
+		uint32_t debug3 = ENC28_readOp(0x00,EIR);
 		uint16_t count = 0;
-		while ((ENC28_readReg8(EIR) & (EIR_TXIF | EIR_TXERIF)) == 0 && ++count < 1000U);
-		if (!(ENC28_readReg8(EIR) & EIR_TXERIF) && count < 1000U) 
+		
+		//while ((ENC28_readOp(0x00,EIR) & (EIR_TXIF | EIR_TXERIF)) == 0);// && ++count < 0xffff);
+		uint32_t debug4 = ENC28_readOp(0x00,EIR);
+		if (!(ENC28_readOp(0x00,EIR) & EIR_TXERIF))// && count < 0xffff) 
 		{
        // no error; start new transmission
+			PB13=1;
        break;
     }
 		// cancel previous transmission if stuck
-    ENC28_writeOp(ENC28_BIT_FIELD_CLR, ECON1, ECON1_TXRTS);
+		PB13=1;
+    ENC28_writeOp(0x05, ECON1, ECON1_TXRTS);
 		break;
 	}
+
 }
 
 void ENC28_writeBuf(uint16_t len, uint8_t* data)
 {
-	uint8_t spiData[2];
-	/*Uncmt
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, GPIO_PIN_RESET);
-	spiData[0] = ENC28_WRITE_BUF_MEM;
-	HAL_SPI_Transmit(&hspi1, spiData, 1, 100);
-	HAL_SPI_Transmit(&hspi1, data, len, 100);
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, GPIO_PIN_SET);
-	*/
-	spiData[0] = ENC28_WRITE_BUF_MEM;
-	spiData[1] = 0xff;
-			            /* Write to TX register */
-            SPI_WRITE_TX(SPI0, spiData[0]);
-            /* Trigger SPI data transfer */
-            SPI_TRIGGER(SPI0);
-            /* Check SPI0 busy status */
-            while(SPI_IS_BUSY(SPI0));
-	
-				            /* Write to TX register */
-            SPI_WRITE_TX(SPI0, spiData[1]);
-            /* Trigger SPI data transfer */
-            SPI_TRIGGER(SPI0);
-            /* Check SPI0 busy status */
-            while(SPI_IS_BUSY(SPI0));
-						
-	uint16_t a=0;
-	
-	while(a<len)
-		{
-			            /* Write to TX register */
-            SPI_WRITE_TX(SPI0, data[a]);
-            /* Trigger SPI data transfer */
-            SPI_TRIGGER(SPI0);
-            /* Check SPI0 busy status */
-            while(SPI_IS_BUSY(SPI0));
-			a=a+1;
-		}
-						
+	SPI0->CNTRL |= 8<<SPI_CNTRL_TX_BIT_LEN_Pos;
+		PA14=0;
+		uint8_t de =0;
+		/* Write to TX register */
+    SPI_WRITE_TX(SPI0, 0x7a);
+    /* Trigger SPI data transfer */
+    SPI_TRIGGER(SPI0);
+    /* Check SPI0 busy status */
+    while(SPI_IS_BUSY(SPI0));
+	uint8_t ARP[42] = {0xff , 0xff, 0xff, 0xff, 0xff, 0xff,//Destination MAC set as boardcast
+										0x74, 0x69, 0x69, 0x2d, 0x30, 0x36,//Source MAC 
+										0x08, 0x06, 0x00, 0x01, //Ethernettype(0x0806=ARP)/HTYPE(0x01 Eth)
+										0x08, 0x00, 0x06, 0x04, 0x00, 0x01,//PTYPE(0x08IP)/HLEN(0x0604=42)/Oper(0x01)Request
+										0x74, 0x69, 0x69, 0x2d, 0x30, 0x36, //SenderMAC = Source MAC
+										0xc0, 0xa8, 0x01, 119,//SenderIP
+										0x00, 0x00, 0x00, 0x00, 0x00, 0x00,//TargetMAC
+										0xc0, 0xa8, 0x01, 1};//PADING
+	for(int i =0;i<42;i++)
+	{		
+		de++;
+		/* Write to TX register */
+    SPI_WRITE_TX(SPI0, ARP[i]);
+    /* Trigger SPI data transfer */
+    SPI_TRIGGER(SPI0);
+    /* Check SPI0 busy status */
+    while(SPI_IS_BUSY(SPI0));
+		de++;
+	}
+		PA14=1;
 }
 void delay(uint32_t time)
 	{
