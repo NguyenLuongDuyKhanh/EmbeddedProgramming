@@ -11,8 +11,12 @@
 static uint8_t mymac[6] ={0x00,0x1b,0x77,0x71,0x48,0xf0}; 			//dia chi mac enc28j60
 static uint8_t myip[4] ={192, 168, 1, 125};                    //dia chi IP cua enc28j60
 
-static uint8_t dis_mac[6] = {0x1C,0x65,0x9D,0x58,0x97,0xF3}; // dia chi mac may tinh // "ipconfig /all" roi tim cai MAC cua card WIfi ay
-static uint8_t dis_ip[4] = {192,168,1,116};                   // IP may tinh
+//static uint8_t dis_mac[6] = {0x1C,0x65,0x9D,0x58,0x97,0xF3}; // dia chi mac may tinh // "ipconfig /all" roi tim cai MAC cua card WIfi ay
+//static uint8_t dis_ip[4] = {192,168,1,116};                   // IP may tinh
+
+static uint8_t dis_mac[6] = {0x18,0x56,0x80,0xfb,0xe8,0xd9}; // dia chi mac may tinh // "ipconfig /all" roi tim cai MAC cua card WIfi ay
+static uint8_t dis_ip[4] = {192,168,1,103};                   // IP may tinh
+
 
 #define BUFFER_SIZE 500//400
 static uint8_t buf[BUFFER_SIZE + 1];
@@ -71,13 +75,13 @@ int main(void)
 				PB13^=1; // Nay de check xem no co chay vao main de blink k			
 		// Block2, sau khi uncomment block 1 thi block 2 no se gui goi UDP den dia chi IP may tinh (192.168.1.16)
 				
-//		buf[UDP_DATA_P]='X';
-//		buf[UDP_DATA_P+1]='I';
-//		buf[UDP_DATA_P+2]='U';
-//		send_udp_prepare(buf,5001,dis_ip,5001,dis_mac);	
-//		send_udp_transmit(buf,3);
+		buf[UDP_DATA_P]='X';
+		buf[UDP_DATA_P+1]='I';
+		buf[UDP_DATA_P+2]='U';
+		send_udp_prepare(buf,5001,dis_ip,5001,dis_mac);	
+		send_udp_transmit(buf,3);
 		
-			enc28j60PacketSend(42, ARP);
+			//enc28j60PacketSend(42, ARP);
 				delay(5000);
 				}
 }
