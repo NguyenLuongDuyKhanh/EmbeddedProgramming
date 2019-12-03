@@ -58,10 +58,10 @@ int main(void)
 	
 	//Uncomment code duoi day no se bi loop hoai trong ham Init/PhyWrite : while (enc28j60Read(MISTAT) & MISTAT_BUSY)
 	// Block1
-	
-		enc28j60Init(mymac);
-		delay(1500);
-		enc28j60PhyWrite(PHLCON, 0x476);
+	enc28j60Read(MAMXFLH);
+		//enc28j60Init(mymac);
+		//delay(1500);
+		//enc28j60PhyWrite(PHLCON, 0x476);
    //enc28j60clkout(2); // Thay doi clkout 6.25MHz den 12.5MHz
 		
 		delay(1500);// giu cham de khi ngat nguon va bat lai khong phai an nut NRST
@@ -75,11 +75,11 @@ int main(void)
 				PB13^=1; // Nay de check xem no co chay vao main de blink k			
 		// Block2, sau khi uncomment block 1 thi block 2 no se gui goi UDP den dia chi IP may tinh (192.168.1.16)
 				
-		buf[UDP_DATA_P]='X';
-		buf[UDP_DATA_P+1]='I';
-		buf[UDP_DATA_P+2]='U';
-		send_udp_prepare(buf,5001,dis_ip,5001,dis_mac);	
-		send_udp_transmit(buf,3);
+//		buf[UDP_DATA_P]='X';
+//		buf[UDP_DATA_P+1]='I';
+//		buf[UDP_DATA_P+2]='U';
+//		send_udp_prepare(buf,5001,dis_ip,5001,dis_mac);	
+//		send_udp_transmit(buf,3);
 		
 			//enc28j60PacketSend(42, ARP);
 				delay(5000);
