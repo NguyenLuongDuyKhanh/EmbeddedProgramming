@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Drv\inc;.\RTOS\include;.\RTOS\portable\RVDS\ARM_CM0;..\Beta;.\Ethernet;..\EmbeddedProgramming;.\EthernetQuanGui;.\InternetProtocol</IncludePath>
+              <IncludePath>.\Drv\inc;.\RTOS\include;.\RTOS\portable\RVDS\ARM_CM0;..\Beta;.\Ethernet;..\EmbeddedProgramming;.\EthernetQuanGui;.\InternetProtocol;.\W5500;.\W5500\W5500;.\loopback;.\mbed\WIZnetInterface;.\mbed\WIZnetInterface\WIZnet</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -556,6 +556,36 @@
               <FileName>net.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\InternetProtocol\net.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>W5500mbed</GroupName>
+          <Files>
+            <File>
+              <FileName>pico_string.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\mbed\WIZnetInterface\pico_string.h</FilePath>
+            </File>
+            <File>
+              <FileName>WIZnetInterface.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\mbed\WIZnetInterface\WIZnetInterface.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>WIZnetInterface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\mbed\WIZnetInterface\WIZnetInterface.h</FilePath>
+            </File>
+            <File>
+              <FileName>W5500.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\mbed\WIZnetInterface\WIZnet\W5500.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>W5500.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\mbed\WIZnetInterface\WIZnet\W5500.h</FilePath>
             </File>
           </Files>
         </Group>
