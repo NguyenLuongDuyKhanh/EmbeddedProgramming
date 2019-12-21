@@ -9,11 +9,11 @@
  * Copyright (C) 2014 Nuvoton Technology Corp. All rights reserved.
  *
  ******************************************************************************/
-#include "NUC131.h"
+//#include "NUC131.h"
 
 #ifndef __SPI_H__
 #define __SPI_H__
-
+#include "NUC131.h"
 #ifdef __cplusplus
 extern "C"
 {

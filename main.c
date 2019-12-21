@@ -5,14 +5,25 @@
 #include "ENC28J60.H"
 #include "net.h"
 #include "loopback.h"
+#include "socket.h"
 
 #define PSTR(s) s
 /* Function prototype declaration */
 void SYS_Init(void);
 void SPI_Init(void);
 
-void main()
+uint8_t ARP[42] = {0xff , 0xff, 0xff, 0xff, 0xff, 0xff,//Destination MAC set as boardcast
+										0x74, 0x69, 0x69, 0x2d, 0x30, 0x36,//Source MAC 
+										0x08, 0x06, 0x00, 0x01, //Ethernettype(0x0806=ARP)/HTYPE(0x01 Eth)
+										0x08, 0x00, 0x06, 0x04, 0x00, 0x01,//PTYPE(0x08IP)/HLEN(0x0604=42)/Oper(0x01)Request
+										0x74, 0x69, 0x69, 0x2d, 0x30, 0x36, //SenderMAC = Source MAC
+										0xc0, 0xa8, 0x01, 119,//SenderIP
+										0x00, 0x00, 0x00, 0x00, 0x00, 0x00,//TargetMAC
+										0xc0, 0xa8, 0x01, 1};//PADING
+
+int main()
 {
+	uint8_t khanh[5]={'k','h','b','n','h'};
 	/* Unlock protected registers */
     SYS_UnlockReg();
 
@@ -20,9 +31,23 @@ void main()
 
     /* Lock protected registers */
     SYS_LockReg();
-		
+		GPIO_SetMode(PA,BIT14,GPIO_PMD_OUTPUT);
     /* Init SPI */
     SPI_Init();
+//	ENC28J60_CSL();
+//	//PA14=0;
+//	
+//	wizchip_spi_writebyte('a');
+//	wizchip_spi_writeburst(khanh,5) ;	
+//	
+//	//PA14=1;
+//	ENC28J60_CSH();
+	printf("hi khanh");
+	uint8_t destip[4] = 	{192, 168, 1, 103};
+  uint16_t destport = 	5001;
+	printf("hi khanh");
+  loopback_tcpc(1, khanh,destip,destport);
+	printf("hi khanh");
 	while(1)
 	{
 		
@@ -90,5 +115,4 @@ void SPI_Init(void)
     //SPI_EnableAutoSS(SPI0, SPI_SS0, SPI_SS_ACTIVE_LOW);
 		SPI_DisableAutoSS(SPI0);
 }
-
 /*** (C) COPYRIGHT 2014 Nuvoton Technology Corp. ***/

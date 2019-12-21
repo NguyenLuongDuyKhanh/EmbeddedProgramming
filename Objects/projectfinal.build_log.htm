@@ -22,59 +22,21 @@ Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
 D:\WorkingZone\NhungCanBan\Beta\EmbeddedProgramming\projectfinal.uvprojx
-Project File Date:  12/20/2019
+Project File Date:  12/21/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Installation\ARM\ARMCC\Bin'
 Build target 'ShipShooting'
-compiling gpio.c...
-compiling adc.c...
-compiling fmc.c...
 compiling main.c...
-main.c(14): warning:  #951-D: return type of function "main" must be "int"
-  void main()
-main.c(30): warning:  #111-D: statement is unreachable
+main.c(55): warning:  #111-D: statement is unreachable
   	return 0;
-main.c(30): warning:  #120-D: return value type does not match the function type
-  	return 0;
-main.c(94): warning:  #1-D: last line of file ends without a newline
+main.c(118): warning:  #1-D: last line of file ends without a newline
   /*** (C) COPYRIGHT 2014 Nuvoton Technology Corp. ***/
-main.c: 4 warnings, 0 errors
-compiling clk.c...
-compiling bpwm.c...
-compiling can.c...
-compiling i2c.c...
-compiling timer.c...
-compiling sys.c...
-compiling spi.c...
-compiling pwm.c...
-compiling uart.c...
-compiling wdt.c...
-compiling wwdt.c...
-compiling wizchip_conf.c...
-w5500\wizchip_conf.c(124): error:  #20: identifier "dummydata" is undefined
-  	SPI_WRITE_TX(SPI0, (uint8_t)dummydata);
-w5500\wizchip_conf.c(130): warning:  #111-D: statement is unreachable
-  	return 0;
-w5500\wizchip_conf.c: 1 warning, 1 error
-compiling STM_ENC28_J60.c...
-Ethernet\STM_ENC28_J60.h(139): warning:  #1-D: last line of file ends without a newline
-  void ENC28_writeBuf(uint16_t len, uint8_t* data);
-Ethernet\STM_ENC28_J60.c(132): warning:  #550-D: variable "h"  was set but never used
-  	uint8_t h;
-Ethernet\STM_ENC28_J60.c(252): warning:  #177-D: variable "count"  was declared but never referenced
-  		uint16_t count = 0;
-Ethernet\STM_ENC28_J60.c(305): warning:  #1-D: last line of file ends without a newline
-  	}
-Ethernet\STM_ENC28_J60.c: 4 warnings, 0 errors
-compiling retarget.c...
-compiling ENC28J60.C...
-EthernetQuanGui\ENC28J60.C(165): warning:  #177-D: variable "i"  was declared but never referenced
-     unsigned long i;
-EthernetQuanGui\ENC28J60.C: 1 warning, 0 errors
-compiling ip_arp_udp_tcp.c...
-compiling system_NUC131.c...
-".\Objects\projectfinal.axf" - 1 Error(s), 10 Warning(s).
+main.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=7300 RO-data=336 RW-data=180 ZI-data=2548  
+FromELF: creating hex file...
+".\Objects\projectfinal.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -90,9 +52,19 @@ Package Vendor: Nuvoton
                 Nuvoton ARM Cortex-M NuMicro Family Device Support
    * Component: Startup Version: 0.00.001
 
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.ARM_Compiler.1.6.1.pack
+                Keil.ARM_Compiler.1.6.1
+                Keil ARM Compiler extensions for ARM Compiler 5 and ARM Compiler 6
+   * Component: Event Recorder Variant: DAP Version: 1.4.0
+   * Component: STDIN Variant: Breakpoint Version: 1.2.0
+   * Component: STDOUT Variant: EVR Version: 1.2.0
+
 <h2>Collection of Component include folders:</h2>
+  .\RTE\Compiler
   .\RTE\_ShipShooting
   D:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include
+  D:\Installation\keilpack\Keil\ARM_Compiler\1.6.1\Include
   D:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include
   D:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc
 
@@ -100,13 +72,23 @@ Package Vendor: Nuvoton
 
    * Component: ARM::CMSIS:CORE:5.3.0
 
+   * Component: Keil.ARM Compiler::Compiler:Event Recorder:DAP:1.4.0
+      Source file:   Source\EventRecorder.c
+      Include file:  Include\EventRecorder.h
+      Include file:  Config\EventRecorderConf.h
+
+   * Component: Keil.ARM Compiler::Compiler:I/O:STDIN:Breakpoint:1.2.0
+      Source file:   Source\retarget_io.c
+
+   * Component: Keil.ARM Compiler::Compiler:I/O:STDOUT:EVR:1.2.0
+      Source file:   Source\retarget_io.c
+
    * Component: Nuvoton::Device:Startup:0.00.001
       Source file:   Device\NUC131\Source\ARM\startup_NUC131.s
       Include file:  Device\NUC131\Include\NUC131.h
       Source file:   Device\NUC131\Source\system_NUC131.c
       Source file:   Device\NUC131\StdDriver\src\retarget.c
-Target not created.
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

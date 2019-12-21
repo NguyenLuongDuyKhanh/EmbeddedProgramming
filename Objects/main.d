@@ -29,3 +29,7 @@
 .\objects\main.o: .\Drv\inc\CLK.h
 .\objects\main.o: .\InternetProtocol\net.h
 .\objects\main.o: .\W5500\loopback.h
+.\objects\main.o: .\W5500\socket.h
+.\objects\main.o: .\W5500\wizchip_conf.h
+.\objects\main.o: ..\EmbeddedProgramming\W5500/w5500.h
+.\objects\main.o: ..\EmbeddedProgramming\W5500/wizchip_conf.h
