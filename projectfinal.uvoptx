@@ -437,7 +437,7 @@
 
   <Group>
     <GroupName>Source Group 1</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -844,7 +844,7 @@
   </Group>
 
   <Group>
-    <GroupName>W5500mbed</GroupName>
+    <GroupName>w5500</GroupName>
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -852,60 +852,96 @@
     <File>
       <GroupNumber>7</GroupNumber>
       <FileNumber>31</FileNumber>
-      <FileType>5</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\mbed\WIZnetInterface\pico_string.h</PathWithFileName>
-      <FilenameWithoutPath>pico_string.h</FilenameWithoutPath>
+      <PathWithFileName>.\w5500\loopback.c</PathWithFileName>
+      <FilenameWithoutPath>loopback.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
       <FileNumber>32</FileNumber>
-      <FileType>8</FileType>
+      <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\mbed\WIZnetInterface\WIZnetInterface.cpp</PathWithFileName>
-      <FilenameWithoutPath>WIZnetInterface.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\w5500\loopback.h</PathWithFileName>
+      <FilenameWithoutPath>loopback.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
       <FileNumber>33</FileNumber>
-      <FileType>5</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\mbed\WIZnetInterface\WIZnetInterface.h</PathWithFileName>
-      <FilenameWithoutPath>WIZnetInterface.h</FilenameWithoutPath>
+      <PathWithFileName>.\w5500\socket.c</PathWithFileName>
+      <FilenameWithoutPath>socket.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
       <FileNumber>34</FileNumber>
-      <FileType>8</FileType>
+      <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\mbed\WIZnetInterface\WIZnet\W5500.cpp</PathWithFileName>
-      <FilenameWithoutPath>W5500.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\w5500\socket.h</PathWithFileName>
+      <FilenameWithoutPath>socket.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
       <FileNumber>35</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\w5500\w5500.c</PathWithFileName>
+      <FilenameWithoutPath>w5500.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>36</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\mbed\WIZnetInterface\WIZnet\W5500.h</PathWithFileName>
-      <FilenameWithoutPath>W5500.h</FilenameWithoutPath>
+      <PathWithFileName>.\w5500\w5500.h</PathWithFileName>
+      <FilenameWithoutPath>w5500.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>37</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\w5500\wizchip_conf.c</PathWithFileName>
+      <FilenameWithoutPath>wizchip_conf.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>38</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\w5500\wizchip_conf.h</PathWithFileName>
+      <FilenameWithoutPath>wizchip_conf.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

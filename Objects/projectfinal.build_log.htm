@@ -22,198 +22,59 @@ Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
 D:\WorkingZone\NhungCanBan\Beta\EmbeddedProgramming\projectfinal.uvprojx
-Project File Date:  12/19/2019
+Project File Date:  12/20/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Installation\ARM\ARMCC\Bin'
 Build target 'ShipShooting'
+compiling gpio.c...
+compiling adc.c...
+compiling fmc.c...
 compiling main.c...
-.\mbed\WIZnetInterface\WIZnet\W5500.h(93): error:  #20: identifier "class" is undefined
-  class WIZnet_Chip {
-.\mbed\WIZnetInterface\WIZnet\W5500.h(93): error:  #65: expected a ";"
-  class WIZnet_Chip {
-.\mbed\WIZnetInterface\WIZnet\W5500.h(117): warning:  #12-D: parsing restarts here after previous syntax error
-      bool disconnect();
-.\mbed\WIZnetInterface\WIZnet\W5500.h(126): error:  #20: identifier "bool" is undefined
-      bool connect(int socket, const char * host, int port, int timeout_ms = 10*1000);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(126): error:  #18: expected a ")"
-      bool connect(int socket, const char * host, int port, int timeout_ms = 10*1000);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(134): error:  #20: identifier "bool" is undefined
-      bool setProtocol(int socket, Protocol p);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(134): error:  #20: identifier "Protocol" is undefined
-      bool setProtocol(int socket, Protocol p);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(139): warning:  #1295-D: Deprecated declaration reset - give arg types
-      void reset();
-.\mbed\WIZnetInterface\WIZnet\W5500.h(141): error:  #18: expected a ")"
-      int wait_readable(int socket, int wait_time_ms, int req_size = 0);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(143): error:  #18: expected a ")"
-      int wait_writeable(int socket, int wait_time_ms, int req_size = 0);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(150): error:  #20: identifier "bool" is undefined
-      bool is_connected(int socket);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(157): error:  #20: identifier "bool" is undefined
-      bool is_fin_received(int socket);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(164): error:  #20: identifier "bool" is undefined
-      bool close(int socket);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(179): error:  #20: identifier "bool" is undefined
-      bool isDHCP() {
-.\mbed\WIZnetInterface\WIZnet\W5500.h(180): error:  #20: identifier "dhcp" is undefined
-          return dhcp;
-.\mbed\WIZnetInterface\WIZnet\W5500.h(183): error:  #20: identifier "bool" is undefined
-      bool gethostbyname(const char* host, uint32_t* ip);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(185): error:  #757: variable "WIZnet_Chip"  is not a type name
-      static WIZnet_Chip * getInstance() {
-.\mbed\WIZnetInterface\WIZnet\W5500.h(186): error:  #20: identifier "inst" is undefined
-          return inst;
-.\mbed\WIZnetInterface\WIZnet\W5500.h(189): warning:  #1295-D: Deprecated declaration new_socket - give arg types
-      int new_socket();
-.\mbed\WIZnetInterface\WIZnet\W5500.h(190): warning:  #1295-D: Deprecated declaration new_port - give arg types
-      uint16_t new_port();
-.\mbed\WIZnetInterface\WIZnet\W5500.h(191): error:  #20: identifier "Command" is undefined
-      void scmd(int socket, Command cmd);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(193): warning:  #77-D: this declaration has no storage class or type specifier
-      template<typename T>
-.\mbed\WIZnetInterface\WIZnet\W5500.h(193): error:  #65: expected a ";"
-      template<typename T>
-.\mbed\WIZnetInterface\WIZnet\W5500.h(260): warning:  #12-D: parsing restarts here after previous syntax error
-      uint8_t mac[6];
-.\mbed\WIZnetInterface\WIZnet\W5500.h(265): error:  #20: identifier "bool" is undefined
-      bool dhcp;
-.\mbed\WIZnetInterface\WIZnet\W5500.h(267): error:  #757: variable "WIZnet_Chip"  is not a type name
-      static WIZnet_Chip* inst;
-.\mbed\WIZnetInterface\WIZnet\W5500.h(270): warning:  #223-D: function "spi_write" declared implicitly
-          spi_write(addr, 0x04, data, 6);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(273): warning:  #159-D: declaration is incompatible with previous "spi_write"  (declared at line 270)
-      void spi_write(uint16_t addr, uint8_t cb, const uint8_t *buf, uint16_t len);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(275): error:  #20: identifier "SPI" is undefined
-      SPI* spi;
-.\mbed\WIZnetInterface\WIZnet\W5500.h(276): error:  #20: identifier "DigitalOut" is undefined
-      DigitalOut cs;
-.\mbed\WIZnetInterface\WIZnet\W5500.h(277): error:  #20: identifier "DigitalOut" is undefined
-      DigitalOut reset_pin;
-.\mbed\WIZnetInterface\WIZnet\W5500.h(278): error:  #169: expected a declaration
-  };
-.\mbed\WIZnetInterface\WIZnetInterface.h(24): error:  #20: identifier "class" is undefined
-  class WIZnetInterface: public WIZnet_Chip {
-.\mbed\WIZnetInterface\WIZnetInterface.h(24): error:  #65: expected a ";"
-  class WIZnetInterface: public WIZnet_Chip {
-.\mbed\WIZnetInterface\WIZnetInterface.h(52): warning:  #12-D: parsing restarts here after previous syntax error
-    int init(uint8_t * mac, const char* ip, const char* mask, const char* gateway);
-.\mbed\WIZnetInterface\WIZnetInterface.h(58): warning:  #1295-D: Deprecated declaration connect - give arg types
-    int connect();
-.\mbed\WIZnetInterface\WIZnetInterface.h(64): warning:  #1295-D: Deprecated declaration disconnect - give arg types
-    int disconnect();
-.\mbed\WIZnetInterface\WIZnetInterface.h(70): warning:  #1295-D: Deprecated declaration getIPAddress - give arg types
-    char* getIPAddress();
-.\mbed\WIZnetInterface\WIZnetInterface.h(71): warning:  #1295-D: Deprecated declaration getNetworkMask - give arg types
-    char* getNetworkMask();
-.\mbed\WIZnetInterface\WIZnetInterface.h(72): warning:  #1295-D: Deprecated declaration getGateway - give arg types
-    char* getGateway();
-.\mbed\WIZnetInterface\WIZnetInterface.h(73): warning:  #1295-D: Deprecated declaration getMACAddress - give arg types
-    char* getMACAddress();
-.\mbed\WIZnetInterface\WIZnetInterface.h(75): error:  #18: expected a ")"
-    int IPrenew(int timeout_ms = 15*1000);
-.\mbed\WIZnetInterface\WIZnetInterface.h(77): warning:  #77-D: this declaration has no storage class or type specifier
-  private:
-.\mbed\WIZnetInterface\WIZnetInterface.h(77): error:  #65: expected a ";"
-  private:
-.\mbed\WIZnetInterface\WIZnetInterface.h(82): error:  #20: identifier "bool" is undefined
-      bool ip_set;
-.\mbed\WIZnetInterface\WIZnetInterface.h(83): error:  #169: expected a declaration
-  };
-main.c: 16 warnings, 30 errors
-compiling WIZnetInterface.cpp...
-.\mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(103): error:  #20: identifier "SPI" is undefined
-  	WIZnet_Chip(SPI* spi, PinName cs, PinName reset);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(103): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(SPI* spi, PinName cs, PinName reset);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(103): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(SPI* spi, PinName cs, PinName reset);
-.\mbed\WIZnetInterface\WIZnet\W5500.h(193): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-.\mbed\WIZnetInterface\WIZnet\W5500.h(198): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-.\mbed\WIZnetInterface\WIZnet\W5500.h(203): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-.\mbed\WIZnetInterface\WIZnet\W5500.h(208): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-.\mbed\WIZnetInterface\WIZnet\W5500.h(220): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-.\mbed\WIZnetInterface\WIZnet\W5500.h(225): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-.\mbed\WIZnetInterface\WIZnet\W5500.h(275): error:  #20: identifier "SPI" is undefined
-      SPI* spi;
-.\mbed\WIZnetInterface\WIZnet\W5500.h(276): error:  #20: identifier "DigitalOut" is undefined
-      DigitalOut cs;
-.\mbed\WIZnetInterface\WIZnet\W5500.h(277): error:  #20: identifier "DigitalOut" is undefined
-      DigitalOut reset_pin;
-mbed\WIZnetInterface\WIZnetInterface.h(36): error:  #20: identifier "PinName" is undefined
-  	WIZnetInterface(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnetInterface.h(36): error:  #20: identifier "PinName" is undefined
-  	WIZnetInterface(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnetInterface.h(36): error:  #20: identifier "PinName" is undefined
-  	WIZnetInterface(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnetInterface.h(36): error:  #20: identifier "PinName" is undefined
-  	WIZnetInterface(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnetInterface.h(36): error:  #20: identifier "PinName" is undefined
-  	WIZnetInterface(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnetInterface.h(37): error:  #20: identifier "SPI" is undefined
-  	WIZnetInterface(SPI* spi, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnetInterface.h(37): error:  #20: identifier "PinName" is undefined
-  	WIZnetInterface(SPI* spi, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnetInterface.h(37): error:  #20: identifier "PinName" is undefined
-  	WIZnetInterface(SPI* spi, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnetInterface.h(85): error:  #5: cannot open source input file "TCPSocketConnection.h": No such file or directory
-  #include "TCPSocketConnection.h"
-mbed\WIZnetInterface\WIZnetInterface.cpp: 0 warnings, 26 errors
-compiling W5500.cpp...
-mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnet\W5500.h(102): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(PinName mosi, PinName miso, PinName sclk, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnet\W5500.h(103): error:  #20: identifier "SPI" is undefined
-  	WIZnet_Chip(SPI* spi, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnet\W5500.h(103): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(SPI* spi, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnet\W5500.h(103): error:  #20: identifier "PinName" is undefined
-  	WIZnet_Chip(SPI* spi, PinName cs, PinName reset);
-mbed\WIZnetInterface\WIZnet\W5500.h(193): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-mbed\WIZnetInterface\WIZnet\W5500.h(198): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-mbed\WIZnetInterface\WIZnet\W5500.h(203): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-mbed\WIZnetInterface\WIZnet\W5500.h(208): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-mbed\WIZnetInterface\WIZnet\W5500.h(220): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-mbed\WIZnetInterface\WIZnet\W5500.h(225): error:  #800: this declaration may not have extern "C" linkage
-      template<typename T>
-mbed\WIZnetInterface\WIZnet\W5500.h(275): error:  #20: identifier "SPI" is undefined
-      SPI* spi;
-mbed\WIZnetInterface\WIZnet\W5500.h(276): error:  #20: identifier "DigitalOut" is undefined
-      DigitalOut cs;
-mbed\WIZnetInterface\WIZnet\W5500.h(277): error:  #20: identifier "DigitalOut" is undefined
-      DigitalOut reset_pin;
-mbed\WIZnetInterface\WIZnet\W5500.cpp(22): error:  #5: cannot open source input file "DNSClient.h": No such file or directory
-  #include "DNSClient.h"
-mbed\WIZnetInterface\WIZnet\W5500.cpp: 0 warnings, 18 errors
-".\Objects\projectfinal.axf" - 74 Error(s), 16 Warning(s).
+main.c(14): warning:  #951-D: return type of function "main" must be "int"
+  void main()
+main.c(30): warning:  #111-D: statement is unreachable
+  	return 0;
+main.c(30): warning:  #120-D: return value type does not match the function type
+  	return 0;
+main.c(94): warning:  #1-D: last line of file ends without a newline
+  /*** (C) COPYRIGHT 2014 Nuvoton Technology Corp. ***/
+main.c: 4 warnings, 0 errors
+compiling clk.c...
+compiling bpwm.c...
+compiling can.c...
+compiling i2c.c...
+compiling timer.c...
+compiling sys.c...
+compiling spi.c...
+compiling pwm.c...
+compiling uart.c...
+compiling wdt.c...
+compiling wwdt.c...
+compiling wizchip_conf.c...
+w5500\wizchip_conf.c(124): error:  #20: identifier "dummydata" is undefined
+  	SPI_WRITE_TX(SPI0, (uint8_t)dummydata);
+w5500\wizchip_conf.c(130): warning:  #111-D: statement is unreachable
+  	return 0;
+w5500\wizchip_conf.c: 1 warning, 1 error
+compiling STM_ENC28_J60.c...
+Ethernet\STM_ENC28_J60.h(139): warning:  #1-D: last line of file ends without a newline
+  void ENC28_writeBuf(uint16_t len, uint8_t* data);
+Ethernet\STM_ENC28_J60.c(132): warning:  #550-D: variable "h"  was set but never used
+  	uint8_t h;
+Ethernet\STM_ENC28_J60.c(252): warning:  #177-D: variable "count"  was declared but never referenced
+  		uint16_t count = 0;
+Ethernet\STM_ENC28_J60.c(305): warning:  #1-D: last line of file ends without a newline
+  	}
+Ethernet\STM_ENC28_J60.c: 4 warnings, 0 errors
+compiling retarget.c...
+compiling ENC28J60.C...
+EthernetQuanGui\ENC28J60.C(165): warning:  #177-D: variable "i"  was declared but never referenced
+     unsigned long i;
+EthernetQuanGui\ENC28J60.C: 1 warning, 0 errors
+compiling ip_arp_udp_tcp.c...
+compiling system_NUC131.c...
+".\Objects\projectfinal.axf" - 1 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -241,11 +102,11 @@ Package Vendor: Nuvoton
 
    * Component: Nuvoton::Device:Startup:0.00.001
       Source file:   Device\NUC131\Source\ARM\startup_NUC131.s
-      Source file:   Device\NUC131\Source\system_NUC131.c
       Include file:  Device\NUC131\Include\NUC131.h
+      Source file:   Device\NUC131\Source\system_NUC131.c
       Source file:   Device\NUC131\StdDriver\src\retarget.c
 Target not created.
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

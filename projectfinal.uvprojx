@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Drv\inc;.\RTOS\include;.\RTOS\portable\RVDS\ARM_CM0;..\Beta;.\Ethernet;..\EmbeddedProgramming;.\EthernetQuanGui;.\InternetProtocol;.\W5500;.\W5500\W5500;.\loopback;.\mbed\WIZnetInterface;.\mbed\WIZnetInterface\WIZnet</IncludePath>
+              <IncludePath>.\Drv\inc;.\RTOS\include;.\RTOS\portable\RVDS\ARM_CM0;..\Beta;.\Ethernet;..\EmbeddedProgramming;.\EthernetQuanGui;.\InternetProtocol;.\W5500;.\W5500\W5500;.\loopback;.\mbed\WIZnetInterface;.\mbed\WIZnetInterface\WIZnet;.\w5500</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -560,32 +560,47 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>W5500mbed</GroupName>
+          <GroupName>w5500</GroupName>
           <Files>
             <File>
-              <FileName>pico_string.h</FileName>
+              <FileName>loopback.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\w5500\loopback.c</FilePath>
+            </File>
+            <File>
+              <FileName>loopback.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\mbed\WIZnetInterface\pico_string.h</FilePath>
+              <FilePath>.\w5500\loopback.h</FilePath>
             </File>
             <File>
-              <FileName>WIZnetInterface.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\mbed\WIZnetInterface\WIZnetInterface.cpp</FilePath>
+              <FileName>socket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\w5500\socket.c</FilePath>
             </File>
             <File>
-              <FileName>WIZnetInterface.h</FileName>
+              <FileName>socket.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\mbed\WIZnetInterface\WIZnetInterface.h</FilePath>
+              <FilePath>.\w5500\socket.h</FilePath>
             </File>
             <File>
-              <FileName>W5500.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\mbed\WIZnetInterface\WIZnet\W5500.cpp</FilePath>
+              <FileName>w5500.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\w5500\w5500.c</FilePath>
             </File>
             <File>
-              <FileName>W5500.h</FileName>
+              <FileName>w5500.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\mbed\WIZnetInterface\WIZnet\W5500.h</FilePath>
+              <FilePath>.\w5500\w5500.h</FilePath>
+            </File>
+            <File>
+              <FileName>wizchip_conf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\w5500\wizchip_conf.c</FilePath>
+            </File>
+            <File>
+              <FileName>wizchip_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\w5500\wizchip_conf.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,7 +1,9 @@
 .\objects\main.o: main.c
-.\objects\main.o: .\mbed\WIZnetInterface\WIZnetInterface.h
-.\objects\main.o: .\mbed\WIZnetInterface\WIZnet\wiznet.h
-.\objects\main.o: .\mbed\WIZnetInterface\WIZnet\W5500.h
+.\objects\main.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\main.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: D:\Installation\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: .\InternetProtocol\ip_arp_udp_tcp.h
+.\objects\main.o: .\EthernetQuanGui\ENC28J60.H
 .\objects\main.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: D:\Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include\NUC131.h
 .\objects\main.o: D:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0.h
@@ -25,6 +27,5 @@
 .\objects\main.o: .\Drv\inc\WWDT.h
 .\objects\main.o: .\Drv\inc\UART.h
 .\objects\main.o: .\Drv\inc\CLK.h
-.\objects\main.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdarg.h
-.\objects\main.o: D:\Installation\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\main.o: D:\Installation\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: .\InternetProtocol\net.h
+.\objects\main.o: .\W5500\loopback.h
