@@ -358,14 +358,13 @@ ARM Macro Assembler    Page 6
               00000400 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
-ork --depend=.\objects\startup_nuc131.d -o.\objects\startup_nuc131.o -I.\RTE\Co
-mpiler -I.\RTE\_ShipShooting -ID:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\C
-ore\Include -ID:\Installation\keilpack\Keil\ARM_Compiler\1.6.1\Include -ID:\Ins
-tallation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include -ID:\Install
-ation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc --predefin
-e="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 528" --predefine="_RTE_ S
-ETA 1" --list=.\listings\startup_nuc131.lst RTE\Device\NUC131SD2AE\startup_NUC1
-31.s
+ork --depend=.\objects\startup_nuc131.d -o.\objects\startup_nuc131.o -I.\RTE\_S
+hipShooting -ID:\Installation\keilpack\ARM\CMSIS\5.6.0\CMSIS\Core\Include -ID:\
+Installation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\Include -ID:\Inst
+allation\keilpack\Nuvoton\NuMicro_DFP\1.3.4\Device\NUC131\StdDriver\inc --prede
+fine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 528" --predefine="_RTE
+_ SETA 1" --list=.\listings\startup_nuc131.lst RTE\Device\NUC131SD2AE\startup_N
+UC131.s
 
 
 

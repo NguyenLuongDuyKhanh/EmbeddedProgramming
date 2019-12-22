@@ -6,11 +6,17 @@
 #include "net.h"
 #include "loopback.h"
 #include "socket.h"
+#include <stdio.h>
 
 #define PSTR(s) s
 /* Function prototype declaration */
 void SYS_Init(void);
 void SPI_Init(void);
+
+void cs_sel();
+void cs_desel();
+void 	wb(uint8_t wb);
+uint8_t rb(void);
 
 uint8_t ARP[42] = {0xff , 0xff, 0xff, 0xff, 0xff, 0xff,//Destination MAC set as boardcast
 										0x74, 0x69, 0x69, 0x2d, 0x30, 0x36,//Source MAC 
@@ -23,7 +29,13 @@ uint8_t ARP[42] = {0xff , 0xff, 0xff, 0xff, 0xff, 0xff,//Destination MAC set as 
 
 int main()
 {
-	uint8_t khanh[5]={'k','h','b','n','h'};
+	uint8_t khanh[20]={'B','a','t','t','l','e','S','h','i','p','Q','u','a','n','K','h','a','n','h','\n'};
+	int32_t revbuf[10];
+	uint16_t distport = 5000;
+	uint8_t distIP[] = {192,168,1,103};
+  uint8_t retVal, sockStatus;
+  int16_t rcvLen;
+  uint8_t rcvBuf[20], bufSize[] = {2, 2, 2, 2};
 	/* Unlock protected registers */
     SYS_UnlockReg();
 
@@ -34,24 +46,80 @@ int main()
 		GPIO_SetMode(PA,BIT14,GPIO_PMD_OUTPUT);
     /* Init SPI */
     SPI_Init();
-//	ENC28J60_CSL();
-//	//PA14=0;
-//	
-//	wizchip_spi_writebyte('a');
-//	wizchip_spi_writeburst(khanh,5) ;	
-//	
-//	//PA14=1;
-//	ENC28J60_CSH();
-	printf("hi khanh");
-	uint8_t destip[4] = 	{192, 168, 1, 103};
-  uint16_t destport = 	5001;
-	printf("hi khanh");
-  loopback_tcpc(1, khanh,destip,destport);
-	printf("hi khanh");
+	
+		reg_wizchip_cs_cbfunc(cs_sel, cs_desel);
+		reg_wizchip_spi_cbfunc(rb, wb);
+	
+		wizchip_init(bufSize, bufSize);
+	  wiz_NetInfo netInfotest = { .mac 	= {0x00, 0, 0, 0, 0, 0},	// Mac address
+                          .ip 	= {0, 0, 0, 0},					// IP address
+                          .sn 	= {0, 0, 0, 0},					// Subnet mask
+                          .gw 	= {0, 0, 0, 0}};					// Gateway address
+	
+  wiz_NetInfo netInfo = { .mac 	= {0x00, 0x08, 0xdc, 0xab, 0xcd, 0xef},	// Mac address
+                          .ip 	= {192, 168, 1, 125},					// IP address
+                          .sn 	= {255, 255, 255, 0},					// Subnet mask
+                          .gw 	= {192, 168, 1, 100}};					// Gateway address
+	
+  wizchip_setnetinfo(&netInfo);
+  wizchip_getnetinfo(&netInfotest);
+	
+	socket(0, Sn_MR_TCP, 5000, 0);
+													
+	connect(0, distIP, distport);
 	while(1)
-	{
-		
-	}
+		{				
+				send(0, khanh, 20);
+				recv(0, (uint32_t*)revbuf, 10);								
+		}
+		disconnect(0);
+//	reconnect:
+//  /* Open socket 0 as TCP_SOCKET with port 5000 */
+//  if((retVal = socket(0, Sn_MR_TCP, 5000, 0)) == 0) {
+//	  /* Put socket in LISTEN mode. This means we are creating a TCP server */
+//	  if((retVal = listen(0)) == SOCK_OK) {
+//		  /* While socket is in LISTEN mode we wait for a remote connection */
+//		  while(sockStatus = getSn_SR(0) == SOCK_LISTEN)
+//			  //HAL_Delay(100);
+//		  /* OK. Got a remote peer. Let's send a message to it */
+//		  while(1) {
+//			  /* If connection is ESTABLISHED with remote peer */
+//			  if(sockStatus = getSn_SR(0) == SOCK_ESTABLISHED) {
+//				  uint8_t remoteIP[4];
+//				  uint16_t remotePort;
+//				  /* Retrieving remote peer IP and port number */
+//				  getsockopt(0, SO_DESTIP, remoteIP);
+//				  getsockopt(0, SO_DESTPORT, (uint8_t*)&remotePort);
+//				  //sprintf(msg, CONN_ESTABLISHED_MSG, remoteIP[0], remoteIP[1], remoteIP[2], remoteIP[3], remotePort);
+//				  //PRINT_STR(msg);
+//				  /* Let's send a welcome message and closing socket */
+////				  if(retVal = send(0, GREETING_MSG, strlen(GREETING_MSG)) == (int16_t)strlen(GREETING_MSG))
+////					  //PRINT_STR(SENT_MESSAGE_MSG);
+////				  else { /* Ops: something went wrong during data transfer */
+////					  sprintf(msg, WRONG_RETVAL_MSG, retVal);
+////					  //PRINT_STR(msg);
+////				  }
+//				  break;
+//			  }
+//			  else { /* Something went wrong with remote peer, maybe the connection was closed unexpectedly */
+//				  //sprintf(msg, WRONG_STATUS_MSG, sockStatus);
+//				  //PRINT_STR(msg);
+//				  break;
+//			  }
+//		  }
+
+//	  } //else /* Ops: socket not in LISTEN mode. Something went wrong */
+//		  //PRINT_STR(LISTEN_ERR_MSG);
+//  } else { /* Can't open the socket. This means something is wrong with W5100 configuration: maybe SPI issue? */
+//	  //sprintf(msg, WRONG_RETVAL_MSG, retVal);
+//	  //PRINT_STR(msg);
+//  }
+
+//  /* We close the socket and start a connection again */
+//  disconnect(0);
+//  close(0);
+//  goto reconnect;
+													
 	return 0;
 }
 
@@ -115,4 +183,39 @@ void SPI_Init(void)
     //SPI_EnableAutoSS(SPI0, SPI_SS0, SPI_SS_ACTIVE_LOW);
 		SPI_DisableAutoSS(SPI0);
 }
+
+uint8_t rb(void)        
+{
+	SPI_WRITE_TX(SPI0, (uint8_t)0xff);
+	/* Trigger SPI data transfer */
+	SPI_TRIGGER(SPI0);
+	/* Check SPI0 busy status */
+	while(SPI_IS_BUSY(SPI0));
+	return SPI_READ_RX(SPI0);
+}
+
+/**
+ * @brief Default function to write in SPI interface.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//void 	wizchip_spi_writebyte(uint8_t wb) {};
+void 	wb(uint8_t wb)
+ {
+	/* Write to TX register */
+  SPI_WRITE_TX(SPI0, (uint8_t)wb);
+  /* Trigger SPI data transfer */
+  SPI_TRIGGER(SPI0);
+  /* Check SPI0 busy status */
+  while(SPI_IS_BUSY(SPI0));
+ }
+ 
+void cs_sel() {
+	PA14=0; //CS LOW
+}
+ 
+void cs_desel() {
+	PA14=1; //CS HIGH
+}
+
 /*** (C) COPYRIGHT 2014 Nuvoton Technology Corp. ***/

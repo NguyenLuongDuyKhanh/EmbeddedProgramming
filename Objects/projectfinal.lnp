@@ -29,7 +29,6 @@
 ".\objects\w5500.o"
 ".\objects\wizchip_conf.o"
 ".\objects\retarget_io.o"
-".\objects\eventrecorder.o"
 ".\objects\retarget.o"
 ".\objects\startup_nuc131.o"
 ".\objects\system_nuc131.o"
