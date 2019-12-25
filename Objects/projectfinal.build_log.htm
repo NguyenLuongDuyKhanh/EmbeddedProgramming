@@ -32,10 +32,12 @@ main.c(16): warning:  #1295-D: Deprecated declaration cs_sel - give arg types
   void cs_sel();
 main.c(17): warning:  #1295-D: Deprecated declaration cs_desel - give arg types
   void cs_desel();
-main.c(73): warning:  #167-D: argument of type "uint32_t *" is incompatible with parameter of type "uint8_t *"
-  				recv(0, (uint32_t*)revbuf, 10);								
-main.c(75): warning:  #111-D: statement is unreachable
+main.c(78): warning:  #111-D: statement is unreachable
   		disconnect(0);
+main.c(34): warning:  #177-D: variable "distport"  was declared but never referenced
+  	uint16_t distport = 5000;
+main.c(35): warning:  #177-D: variable "distIP"  was declared but never referenced
+  	uint8_t distIP[] = {192,168,0,100};
 main.c(36): warning:  #177-D: variable "retVal"  was declared but never referenced
     uint8_t retVal, sockStatus;
 main.c(36): warning:  #177-D: variable "sockStatus"  was declared but never referenced
@@ -44,13 +46,13 @@ main.c(37): warning:  #177-D: variable "rcvLen"  was declared but never referenc
     int16_t rcvLen;
 main.c(38): warning:  #177-D: variable "rcvBuf"  was declared but never referenced
     uint8_t rcvBuf[20], bufSize[] = {2, 2, 2, 2};
-main.c(221): warning:  #1-D: last line of file ends without a newline
+main.c(224): warning:  #1-D: last line of file ends without a newline
   /*** (C) COPYRIGHT 2014 Nuvoton Technology Corp. ***/
-main.c: 9 warnings, 0 errors
+main.c: 10 warnings, 0 errors
 linking...
-Program Size: Code=7424 RO-data=336 RW-data=180 ZI-data=1340  
+Program Size: Code=7468 RO-data=336 RW-data=180 ZI-data=1340  
 FromELF: creating hex file...
-".\Objects\projectfinal.axf" - 0 Error(s), 9 Warning(s).
+".\Objects\projectfinal.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -94,7 +96,7 @@ Package Vendor: Keil
       Source file:   Device\NUC131\StdDriver\src\retarget.c
       Source file:   Device\NUC131\Source\ARM\startup_NUC131.s
       Source file:   Device\NUC131\Source\system_NUC131.c
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

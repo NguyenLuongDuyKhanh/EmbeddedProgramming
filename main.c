@@ -32,7 +32,7 @@ int main()
 	uint8_t khanh[20]={'B','a','t','t','l','e','S','h','i','p','Q','u','a','n','K','h','a','n','h','\n'};
 	int32_t revbuf[10];
 	uint16_t distport = 5000;
-	uint8_t distIP[] = {192,168,1,103};
+	uint8_t distIP[] = {192,168,0,100};
   uint8_t retVal, sockStatus;
   int16_t rcvLen;
   uint8_t rcvBuf[20], bufSize[] = {2, 2, 2, 2};
@@ -57,20 +57,23 @@ int main()
                           .gw 	= {0, 0, 0, 0}};					// Gateway address
 	
   wiz_NetInfo netInfo = { .mac 	= {0x00, 0x08, 0xdc, 0xab, 0xcd, 0xef},	// Mac address
-                          .ip 	= {192, 168, 1, 125},					// IP address
+                          .ip 	= {192, 168, 0, 101},					// IP address
                           .sn 	= {255, 255, 255, 0},					// Subnet mask
-                          .gw 	= {192, 168, 1, 100}};					// Gateway address
+                          .gw 	= {192, 168, 0, 1}};					// Gateway address
 	
   wizchip_setnetinfo(&netInfo);
   wizchip_getnetinfo(&netInfotest);
 	
 	socket(0, Sn_MR_TCP, 5000, 0);
-													
-	connect(0, distIP, distport);
+	uint16_t distportQ = 5000;
+	uint8_t distIPQ[] = {192,168,0,103};	
+	//connect(0, distIP, distport);
+	connect(0, distIPQ, distportQ);
 	while(1)
 		{				
 				send(0, khanh, 20);
-				recv(0, (uint32_t*)revbuf, 10);								
+				recv(0, (uint8_t*)revbuf, 10);			
+delay(4000);			
 		}
 		disconnect(0);
 //	reconnect:
